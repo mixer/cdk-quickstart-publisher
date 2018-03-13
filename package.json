@@ -1,0 +1,40 @@
+{
+  "name": "@mcph/miix-quickstart-publisher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "bin": {
+    "miix-quickstart-publisher": "./bin/miix-quickstart-publisher"
+  },
+  "scripts": {
+    "prepare": "tsc",
+    "fmt": "prettier --single-quote --trailing-comma all --parser typescript --print-width 100 --write \"src/**/*.ts\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mixer/miix-quickstart-publisher.git"
+  },
+  "author": "Connor Peet <connor@peet.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mixer/miix-quickstart-publisher/issues"
+  },
+  "homepage": "https://github.com/mixer/miix-quickstart-publisher#readme",
+  "dependencies": {
+    "async": "^2.6.0",
+    "azure-storage": "^2.8.1",
+    "chalk": "^2.3.2",
+    "ncp": "^2.0.0",
+    "tar": "^4.4.0"
+  },
+  "devDependencies": {
+    "@types/async": "^2.0.47",
+    "@types/chalk": "^2.2.0",
+    "@types/ncp": "^2.0.1",
+    "@types/rimraf": "^2.0.2",
+    "@types/tar": "^4.0.0",
+    "prettier": "^1.11.1",
+    "rimraf": "^2.6.2",
+    "typescript": "^2.7.2"
+  }
+}

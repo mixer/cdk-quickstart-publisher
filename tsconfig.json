@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "declaration": true,
+      "noImplicitAny": true,
+      "noImplicitReturns": true,
+      "noImplicitThis": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "strict": true,
+      "skipLibCheck": true,
+      "module": "commonjs",
+      "target": "es6",
+      "outDir": "dist",
+      "lib": [
+        "es5",
+        "es6",
+        "dom",
+        "es2016.array.include"
+      ],
+      "typeRoots": [
+        "node_modules/@types"
+      ],
+      "types": [
+        "node"
+      ],
+      "baseUrl": ".",
+      "paths": {
+        "*": [
+          "src/types/*"
+        ]
+      }
+    },
+    "exclude": [
+      "node_modules",
+      "dist",
+      "*.d.ts"
+    ]
+  }
