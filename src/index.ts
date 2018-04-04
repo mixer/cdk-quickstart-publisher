@@ -9,6 +9,28 @@ import { behaviors, Behavior } from './behaviors';
 import { mapAll, Callback } from './common';
 
 /**
+ * Contract for quickstart configuration.
+ */
+interface IQuickstartConfig {
+  name: string;
+  tasks: Behavior[];
+}
+
+/**
+ * Loads the quickstart configuration fron the .miix-quickstart file.
+ */
+function loadConfig(packageJson: any): IQuickstartConfig {
+  const config = require(`${process.cwd()}/.miix-quickstart`);
+
+  // legacy array-of-tasks format:
+  if (config instanceof Array) {
+    return { name: packageJson.name, tasks: config };
+  }
+
+  return config;
+}
+
+/**
  * Compresses the requested folder into a tarball.
  */
 function createTarball(folder: string, target: string, callback: Callback) {
@@ -62,9 +84,14 @@ function stage(startMessage: string, stopMessage: string, callback?: () => void)
 /**
  * Creates a folder in the build directory full of the files to be packed.
  */
-function createStagingPath(basePath: string, stagingPath: string, callback: Callback) {
-  mapAll<Behavior>(
-    require(`${basePath}/.miix-quickstart`),
+function createStagingPath(
+  tasks: Behavior[],
+  basePath: string,
+  stagingPath: string,
+  callback: Callback,
+) {
+  mapAll(
+    tasks,
     (item, callback) => {
       (<any>behaviors)[item.action](
         {
@@ -81,8 +108,9 @@ function createStagingPath(basePath: string, stagingPath: string, callback: Call
 
 export function run() {
   const packageJson = require(`${process.cwd()}/package.json`);
+  const quickstartConfig = loadConfig(packageJson);
   const [major, minor] = packageJson.version.split('.');
-  const blobName = `${packageJson.name}_${major}.${minor}.tar.gz`;
+  const blobName = `${quickstartConfig.name}_${major}.${minor}.tar.gz`;
 
   console.log(`Publishing ${blobName}`);
 
@@ -95,6 +123,7 @@ export function run() {
     stage('Preparing workspace', 'Prepared workspace', () => {
       mkdirSync(stagingPath);
       createStagingPath(
+        quickstartConfig.tasks,
         process.cwd(),
         stagingPath,
         stage('Preparing files to compress', 'Files ready', () =>
