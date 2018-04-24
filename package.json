@@ -1,10 +1,10 @@
 {
-  "name": "@mcph/miix-quickstart-publisher",
+  "name": "@mixer/cdk-quickstart-publisher",
   "version": "1.0.3",
   "description": "",
   "main": "dist/index.js",
   "bin": {
-    "miix-quickstart-publisher": "./bin/miix-quickstart-publisher"
+    "cdk-quickstart-publisher": "./bin/cdk-quickstart-publisher"
   },
   "scripts": {
     "prepare": "tsc",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mixer/miix-quickstart-publisher.git"
+    "url": "git+https://github.com/mixer/cdk-quickstart-publisher.git"
   },
   "author": "Connor Peet <connor@peet.io>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mixer/miix-quickstart-publisher/issues"
+    "url": "https://github.com/mixer/cdk-quickstart-publisher/issues"
   },
-  "homepage": "https://github.com/mixer/miix-quickstart-publisher#readme",
+  "homepage": "https://github.com/mixer/cdk-quickstart-publisher#readme",
   "dependencies": {
     "async": "^2.6.0",
     "azure-storage": "^2.8.1",
